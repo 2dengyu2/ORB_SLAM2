@@ -180,6 +180,7 @@ void Map::Save ( const string& filename )
         for ( auto ckf: kf->GetConnectedKeyFrames())
         {
             int weight = kf->GetWeight(ckf);
+            if (ckf->mnId == 0) continue;
             f.write((char*)&ckf->mnId, sizeof(ckf->mnId));
             f.write((char*)&weight, sizeof(weight));
         }
@@ -301,7 +302,7 @@ void Map::Load ( const string &filename, SystemSetting* mySystemSetting, KeyFram
         MapPoint* mp = LoadMapPoint(f);
         AddMapPoint(mp);
     }
-
+    
     // Get all MapPoints
     std::vector<MapPoint*> vmp = GetAllMapPoints();
 

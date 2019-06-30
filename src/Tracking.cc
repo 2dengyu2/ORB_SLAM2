@@ -198,7 +198,7 @@ cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRe
 
     mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
 
-    Track();
+    Track();    
 
     return mCurrentFrame.mTcw.clone();
 }
@@ -229,8 +229,8 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const d
 
     mCurrentFrame = Frame(mImGray,imDepth,timestamp,mpORBextractorLeft,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
 
-    Track();
-
+    Track();    
+    
     return mCurrentFrame.mTcw.clone();
 }
 
@@ -264,7 +264,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         // cout << "Tracking::GrabImageMonocular : New frame made." << endl;
     }
 
-    Track();
+    Track();   
 
     return mCurrentFrame.mTcw.clone();
 }
